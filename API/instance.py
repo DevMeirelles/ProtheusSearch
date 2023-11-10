@@ -14,7 +14,7 @@ class protheus_tabelas(db.Model):
 # Adicione a seguinte função para criar o contexto de aplicação
 def criar_contexto_aplicacao():
     with app.app_context():
-        with open("crawlerObject.json", "r") as json_object:
+        with open("API/crawlerObject.json", "r") as json_object:
             crawlerObject = json.load(json_object)
 
         for item in crawlerObject:
@@ -33,6 +33,7 @@ if __name__ == '__main__':
     # Crie o contexto de aplicação antes de iniciar o servidor
     with app.app_context():
         db.create_all()
+        criar_contexto_aplicacao()
 
     # Inicie o servidor Flask
     app.run(debug=True)
